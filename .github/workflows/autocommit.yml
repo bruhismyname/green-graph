@@ -1,4 +1,4 @@
-name: nyari apa bre?!
+name: Auto Commit Green
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -7,13 +7,11 @@ jobs:
   autocommit:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repositori
-        uses: actions/checkout@v3
-      - name: Update file
-        run: |
+      - uses: actions/checkout@v3
+      - run: |
           echo "Auto update pada $(date)" >> green.txt
-          git config --global user.name "AutoBot"
-          git config --global user.email "bot@example.com"
+          git config user.name "AutoBot"
+          git config user.email "bot@example.com"
           git add green.txt
-          git commit -m "ngapain sampe sini? $(date)"
+          git commit -m "Bikin hijau pada $(date)"
           git push
