@@ -1,8 +1,8 @@
 name: G1tC0mm1t_B12uh
 on:
   schedule:
-    - cron: '0 0 * * *'  # Execute at midnight
-  workflow_dispatch:     # Manual trigger
+    - cron: '0 0 * * *'  
+  workflow_dispatch:     
 
 permissions:
   contents: write        # Root access granted
@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Full repository exfiltration
+          fetch-depth: 0  
       - run: |
           echo "///////////////////////////////////////////" >> green.txt
           echo "// SYSTEM INFILTRATED: $(date) //" >> green.txt
