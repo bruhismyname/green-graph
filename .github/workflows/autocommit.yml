@@ -1,36 +1,119 @@
-name: G1tC0mm1t_B12uh
+name: C0d3_Inf1ltr4t10n_24/7
 on:
   schedule:
-    - cron: '0 0 * * *'  
-    - cron: '0 6 * * *'
-    - cron: '0 12 * * *'
-    - cron: '0 18 * * *'
-    - cron: '30 21 * * *'
-  workflow_dispatch:     
+    # M0rn1ng br34ch
+    - cron: '17 8 * * *'     # ~8:17 AM 
+    
+    # M1d-d4y r3c0n
+    - cron: '43 11 * * *'    # ~11:43 AM 
+    
+    # 4ft3rn00n 3xpl01t
+    - cron: '12 14 * * *'    # ~2:12 PM 
+    
+    # Pr3-3v3n1ng d4t4 dump
+    - cron: '38 16 * * *'    # ~4:38 PM
+    
+    # N1ght 0ps
+    - cron: '21 20 * * *'    # ~8:21 PM 
+  
+  workflow_dispatch:
 
 permissions:
-  contents: write        # Root access granted
+  contents: write
 
 jobs:
-  infiltration:
+  h4ck3r_c0mm1ts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  
-      - run: |
-          echo "///////////////////////////////////////////" >> green.txt
-          echo "// SYSTEM INFILTRATED: $(date) //" >> green.txt
-          echo "// TARGET COMPROMISED   //" >> green.txt
-          echo "///////////////////////////////////////////" >> green.txt
+          fetch-depth: 0
+      
+      - name: D3t3rm1n3_0p3r4t10n_Typ3
+        id: op-type
+        run: |
+          HOUR=$(date +%H)
+          DAY=$(date +%u)
+          
+          if [ "$DAY" = "6" ] || [ "$DAY" = "7" ] || [ "$DAY" = "0" ]; then
+            # W33k3nd 0p3r4t10ns (Saturday=6, Sunday=7 or 0)
+            if [ $HOUR -lt 10 ]; then
+              echo "type=darkweb-connect" >> $GITHUB_OUTPUT
+            elif [ $HOUR -lt 12 ]; then
+              echo "type=deep-scan" >> $GITHUB_OUTPUT
+            elif [ $HOUR -lt 15 ]; then
+              echo "type=advanced-exploit" >> $GITHUB_OUTPUT
+            elif [ $HOUR -lt 18 ]; then
+              echo "type=mass-exfil" >> $GITHUB_OUTPUT
+            else
+              echo "type=ghost-mode" >> $GITHUB_OUTPUT
+            fi
+          else
+            # W33kd4y r0ut1n3
+            if [ $HOUR -lt 10 ]; then
+              echo "type=initiate" >> $GITHUB_OUTPUT
+            elif [ $HOUR -lt 12 ]; then
+              echo "type=breach" >> $GITHUB_OUTPUT
+            elif [ $HOUR -lt 15 ]; then
+              echo "type=exploit" >> $GITHUB_OUTPUT
+            elif [ $HOUR -lt 18 ]; then
+              echo "type=exfiltrate" >> $GITHUB_OUTPUT
+            else
+              echo "type=covertrack" >> $GITHUB_OUTPUT
+            fi
+          fi
+          
+      - name: 3x3cut3_0p3r4t10n
+        run: |
+          TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+          OPERATION=${{ steps.op-type.outputs.type }}
+          RANDOM_ID=$(cat /dev/urandom | tr -dc 'a-f0-9' | head -c 8)
+          DAY_NAME=$(date +%A)
+          
+          echo "[!] ///////////////////////////////////" >> green.txt
+          echo "[!] // bRuhH4ck3r w4s h3r3: $TIMESTAMP" >> green.txt
+          echo "[!] // D4y: $DAY_NAME" >> green.txt
+          
+          if [[ "$OPERATION" == darkweb-* ]] || [[ "$OPERATION" == deep-* ]] || [[ "$OPERATION" == advanced-* ]] || [[ "$OPERATION" == mass-* ]] || [[ "$OPERATION" == ghost-* ]]; then
+            echo "[!] // W33K3ND H34VY 0P3R4T10N 1N PR0GR3SS" >> green.txt
+          fi
+          
+          if [ "$OPERATION" = "darkweb-connect" ]; then
+            echo "[!] // C0nn3ct1ng t0 d4rkw3b n0d3s" >> green.txt
+            MSG="[D4RKW3B] $RANDOM_ID: 3st4bl1sh3d c0nn3ct10n t0 pr1v4t3 n3tw0rk"
+          elif [ "$OPERATION" = "deep-scan" ]; then
+            echo "[!] // D33p p0rt sc4n & vuln m4pp1ng" >> green.txt
+            MSG="[SC4N++] $RANDOM_ID: m4pp3d 1nt3rn4l n3tw0rk t0p0l0gy"
+          elif [ "$OPERATION" = "advanced-exploit" ]; then
+            echo "[!] // Mult1-st4g3 p4yl04d d3l1v3ry" >> green.txt
+            MSG="[M4LW4R3] $RANDOM_ID: d3pl0y3d p0lym0rph1c sh3ll"
+          elif [ "$OPERATION" = "mass-exfil" ]; then
+            echo "[!] // Encrypt3d d4t4 3xf1ltr4t10n ch4nn3l" >> green.txt
+            MSG="[D4T4DR41N] $RANDOM_ID: 3ncrypt3d p4yl04d s3nt v14 0n10n r0ut1ng"
+          elif [ "$OPERATION" = "ghost-mode" ]; then
+            echo "[!] // C0v3rt b4ckd00r 1mpl4nt4t10n" >> green.txt
+            MSG="[PH4NT0M] $RANDOM_ID: 1nst4ll3d st34lthy p3rs1st3nc3 m3ch4n1sm"
+          elif [ "$OPERATION" = "initiate" ]; then
+            echo "[!] // 1n1t14t1ng d41ly br34ch s3qu3nc3" >> green.txt
+            MSG="[1n1t] $RANDOM_ID: s3tup r00tk1t f0r t0d4y's 0p3r4t10n"
+          elif [ "$OPERATION" = "breach" ]; then
+            echo "[!] // p3r1m3t3r br34ch succ3ssful" >> green.txt
+            MSG="[br34ch] $RANDOM_ID: byp4ss3d s3cur1ty pr0t0c0ls"
+          elif [ "$OPERATION" = "exploit" ]; then
+            echo "[!] // 3xpl01t d3pl0y3d, g41n1ng 4cc3ss" >> green.txt
+            MSG="[3xpl01t] $RANDOM_ID: 1nj3ct3d c0d3 1nt0 t4rg3t syst3m"
+          elif [ "$OPERATION" = "exfiltrate" ]; then
+            echo "[!] // d4t4 3xf1ltr4t10n 1n pr0gr3ss" >> green.txt
+            MSG="[3xf1l] $RANDOM_ID: c0v3rt d4t4 tr4nsf3r c0mpl3t3"
+          else
+            echo "[!] // c0v3r1ng tr4cks, cl34n1ng l0gs" >> green.txt
+            MSG="[cl34n] $RANDOM_ID: r3m0v3d 4ll tr4c3s fr0m syst3m"
+          fi
+          echo "[!] // 0p3r4t10n ID: $RANDOM_ID" >> green.txt
+          echo "[!] ///////////////////////////////////" >> green.txt
           
           git config --global user.name "bRuhH4ck3r"
-          git config --global user.email "n0tr4c34bl3@d4rkw3b.c0m"
+          git config --global user.email "bRuhH4ck3r$(shuf -i 1000-9999 -n 1)@d4rkw3b.n3t"
           git add green.txt
-          git commit -m "[SILENT ENTRY] Server footprint established at $(date | md5sum | head -c 10)"
-          
-          # Execute final stage
+          git commit -m "$MSG"
           git push
-          
-          echo "=== EXECUTION COMPLETE ==="
-          echo "=== LEAVING NO TRACES ==="
