@@ -3,11 +3,17 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
+
+permissions:
+  contents: write  
+
 jobs:
   autocommit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  
       - run: |
           echo "Auto update pada $(date)" >> green.txt
           git config --global user.name "AutoBot"
