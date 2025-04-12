@@ -2,6 +2,10 @@ name: G1tC0mm1t_B12uh
 on:
   schedule:
     - cron: '0 0 * * *'  
+    - cron: '0 6 * * *'
+    - cron: '0 12 * * *'
+    - cron: '0 18 * * *'
+    - cron: '30 21 * * *'
   workflow_dispatch:     
 
 permissions:
@@ -20,7 +24,7 @@ jobs:
           echo "// TARGET COMPROMISED   //" >> green.txt
           echo "///////////////////////////////////////////" >> green.txt
           
-          git config --global user.name "Sh4d0wH4ck3r"
+          git config --global user.name "bRuhH4ck3r"
           git config --global user.email "n0tr4c34bl3@d4rkw3b.c0m"
           git add green.txt
           git commit -m "[SILENT ENTRY] Server footprint established at $(date | md5sum | head -c 10)"
